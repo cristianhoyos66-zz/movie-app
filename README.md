@@ -35,6 +35,7 @@ problems. That means we follow the ideas of going with:
 - Aggregates, 
 - Application Services 
 - Domain Services
+- Domain Errors
 
 And other concepts that come up on the road that we can use, such as ubiquitous language, domains (core domain, generic 
 domain and supporting domain) context mapping and bounded context.
@@ -122,7 +123,7 @@ We use Swager V3 for this project.
 
 - http://localhost:8080/v3/api-docs
 
-##Note
+## Note
 
 Have in mind this project is expected to be done in around 3 or 8 hours, so you might see some things still unfinished,
 but the most important is I can describe all what I'm aiming to have in the project and that you can see how I want to 
