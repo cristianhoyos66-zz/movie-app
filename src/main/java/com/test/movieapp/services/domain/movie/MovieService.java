@@ -1,6 +1,6 @@
 package com.test.movieapp.services.domain.movie;
 
-import com.test.movieapp.dtos.MovieDTO;
+import com.test.movieapp.dtos.requests.MovieRequestDTO;
 import com.test.movieapp.entities.MovieEntity;
 import com.test.movieapp.mappers.MovieMapper;
 import com.test.movieapp.repositories.MovieRepository;
@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.LongStream;
 
 @Service
@@ -37,13 +38,17 @@ public class MovieService {
         .forEach(val -> getAndSaveMovies());
   }
 
+  public List<MovieEntity> getAllMovies() {
+    return movieRepository.findAll();
+  }
+
   private void getAndSaveMovies() {
     Arrays.stream(movieIds)
         .forEach(movieId -> omdbaService.getMovie("e4f33820", movieId).map(this::saveMovie));
   }
 
-  private MovieEntity saveMovie(MovieDTO movieDTO) {
-    var movieEntity = movieMapper.getEntityFromDto(movieDTO);
+  private MovieEntity saveMovie(MovieRequestDTO movieRequestDTO) {
+    var movieEntity = movieMapper.getEntityFromDto(movieRequestDTO);
     return movieRepository.save(movieEntity);
   }
 }

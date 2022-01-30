@@ -1,15 +1,16 @@
 package com.test.movieapp.entities;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "MOVIES")
 @Setter
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class MovieEntity {
   @Id
@@ -33,4 +34,7 @@ public class MovieEntity {
 
   @Column(name = "RUNTIME")
   private String runtime;
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "idMovie")
+  private List<ShowTimeEntity> showTimes;
 }

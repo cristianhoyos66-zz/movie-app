@@ -1,9 +1,9 @@
-package com.test.movieapp.dtos;
+package com.test.movieapp.dtos.responses;
 
 import lombok.Data;
 
 @Data
-public class MovieDTO {
+public class MovieResponseDTO {
 
   private String title;
   private String plot;
