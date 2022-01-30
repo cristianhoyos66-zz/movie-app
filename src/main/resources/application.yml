@@ -1,0 +1,21 @@
+omdba:
+  url: http://www.omdbapi.com
+  name: OMDB-API
+---
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/MOVIES_DB
+    username: root
+    password: root
+    driver-class-name: org.mariadb.jdbc.Driver
+  jackson:
+    mapper:
+      accept_case_insensitive_properties: true
+---
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: FULL
